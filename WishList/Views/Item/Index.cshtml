@@ -2,6 +2,18 @@
 @{
     ViewData["Title"] = "Index";
 }
+@model List<WishList.Models.Item>
 
-<h2>Index</h2>
+<h1>Wishlist</h1>
+<a asp-action="create">Add Item</a>
+
+<ul>
+    @foreach(var Item in Model)
+    {
+        <li>
+            @Item.Description
+            <a asp-action="delete" asp-route-id="@Item.Id">Delete</a>
+        </li>
+    }
+</ul>
 
