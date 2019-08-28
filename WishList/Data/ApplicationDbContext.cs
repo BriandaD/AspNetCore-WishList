@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using WishList.Models;
 
 namespace WishList.Data
 {
     public class ApplicationDbContext : DbContext
     {
+        public DbSet<Item> Items { get; set; }
         private readonly DbContextOptions options;
 
         public ApplicationDbContext(DbContextOptions options)
@@ -15,5 +17,7 @@ namespace WishList.Data
         {
             this.options = options;
         }
+
+        
     }
 }
