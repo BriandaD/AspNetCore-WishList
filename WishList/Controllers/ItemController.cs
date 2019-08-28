@@ -10,16 +10,16 @@ namespace WishList.Controllers
 {
     public class ItemController : Controller
     {
-        private readonly ApplicationDbContext _Context;
+        private readonly ApplicationDbContext _context;
 
-        public ItemController(ApplicationDbContext _context)
+        public ItemController(ApplicationDbContext context)
         {
-            _Context = _context;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            var model = _Context.Items.ToList();
+            var model = _context.Items.ToList();
             return View("Index", model);
         }
 
@@ -32,16 +32,16 @@ namespace WishList.Controllers
         [HttpPost]
         public IActionResult Create(Item item)
         {
-            _Context.Items.Add(item);
-            _Context.SaveChanges();
+            _context.Items.Add(item);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
         {
-            var item = _Context.Items.Find(id);
-            _Context.Items.Remove(item);
-            _Context.SaveChanges();
+            var item = _context.Items.Find(id);
+            _context.Items.Remove(item);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
     }
